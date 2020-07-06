@@ -23,10 +23,8 @@ body {
 
 #gridcontainer > div {
     border: 1px solid black;
-    place-items: center / center;
+    /* place-items: center / center; */
 }
-
-
 
 #topbar {
     grid-area: bar;
