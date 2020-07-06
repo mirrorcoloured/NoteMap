@@ -1,0 +1,75 @@
+body {
+    margin: 1;
+}
+
+#topbar {
+    border: 1px solid black;
+}
+
+#gridcontainer {
+    height: 100%;
+    width: 100%;
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 20px repeat(2, 1fr);
+
+    grid-template-areas:
+    "bar bar bar bar bar bar bar bar bar bar bar bar"
+    "tools tools c c c c c c json json json json"
+    "layers layers c c c c c c note note note note"
+    ;
+}
+
+#gridcontainer > div {
+    border: 1px solid black;
+    place-items: center / center;
+}
+
+
+
+#topbar {
+    grid-area: bar;
+}
+
+#center {
+    grid-area: c;
+}
+
+#layer_list {
+    grid-area: layers;
+}
+
+#toolbox {
+    grid-area: tools;
+}
+
+#json_editor {
+    grid-area: json;
+}
+
+#note_editor {
+    grid-area: note;
+}
+
+
+#svg_box {
+    height: 100%;
+    width: 100%;
+}
+
+#note_editor > textarea {
+    width: 100%;
+    height: 100%;
+}
+
+
+.draggable {
+    cursor: move;
+}
+
+.selected {
+    /* stroke: green; */
+    /* stroke-dasharray: 3 3; */
+    stroke-width: 5;
+}

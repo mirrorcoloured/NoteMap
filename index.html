@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="style.css">
+
+        <link href="node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+        <script src="node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+    </head>
+    <body>
+        <div id="gridcontainer">
+            <div id="topbar">
+                <input id="chk_left" type="checkbox" checked>Left</input>
+                <input id="chk_right" type="checkbox" checked>Right</input>
+            </div>
+            <div id="layer_list">
+                layers
+                <ul>
+                    <li>a</li>
+                    <li>b</li>
+                </ul>
+            </div>
+            <div id="toolbox">
+                <button id="btn_circle">Circle</button>
+                <button id="btn_rect">Rect</button>
+                <button id="btn_zoomin">Zoom in</button>
+                <button id="btn_zoomout">Zoom out</button>
+                <!-- TODO zoom slider -->
+            </div>
+            <div id="center">
+                <svg id="svg_box" viewBox="0 0 100 100">
+
+                </svg>
+            </div>
+            <div id="json_editor"></div>
+            <div id="note_editor">
+                <textarea id="txt_note"></textarea>
+            </div>
+        </div>
+
+        <script type="module" src="app.js"></script>
+    </body>
+</html>
