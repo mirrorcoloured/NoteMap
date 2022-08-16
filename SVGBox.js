@@ -181,19 +181,20 @@ export class SVGBox {
     }
 
     zoomIn() {
-        this.zoom -= 10;
+        this.zoom *= 0.5;
         this.updateZoom();
         this.saveZoom();
     }
 
     zoomOut() {
-        this.zoom += 10;
+        this.zoom *= 2;
         this.updateZoom();
         this.saveZoom();
     }
 
     updateZoom() {
-        this.container.setAttribute('viewBox', `0 0 ${this.zoom} ${this.zoom}`)
+        const [left, top, width, height] = [(100 - this.zoom) / 2, (100 - this.zoom) / 2, this.zoom, this.zoom];
+        this.container.setAttribute('viewBox', `${left} ${top} ${width} ${height}`);
     }
 
     load() {
