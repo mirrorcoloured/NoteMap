@@ -76,8 +76,38 @@ document.querySelector("#btn_zoomout").addEventListener("click", function(event)
     SVG_Box.zoomOut();
 })
 
+const e_svg_box = document.querySelector("#svg_box");
+let SVG_Box = new SVGBox(e_svg_box);
 
+const e_title = document.querySelector("#txt_title")
+const e_notes = document.querySelector("#txt_note");
 
+e_title.addEventListener("input", function(event) {
+    let json = JSONeditor.get();
+    json.title = e_title.value;
+    SVG_Box.updateObject(json.id, json);
+    JSONeditor.set(json);
+})
+e_notes.addEventListener("input", function(event) {
+    let json = JSONeditor.get();
+    json.note = e_notes.text;
+    SVG_Box.updateObject(json.id, json);
+    JSONeditor.set(json);
+})
+
+SVG_Box.selectfunction = function(id) {
+    JSONeditor.set(SVG_Box.objects[id]);
+    e_title.value = SVG_Box.objects[id].title;
+    e_notes.value = SVG_Box.objects[id].note;
+}
+SVG_Box.dragfunction = SVG_Box.resizefunction = SVG_Box.enddragfunction = SVG_Box.endresizefunction = function(id) {
+    JSONeditor.set(SVG_Box.objects[id]);
+}
+SVG_Box.deselectfunction = function(id) {
+    JSONeditor.set(undefined);
+    e_title.value = "";
+    e_notes.value = "";
+}
 
 function setupJSONEditor() {
     const container = document.getElementById("json_editor")
@@ -86,7 +116,8 @@ function setupJSONEditor() {
         onChange: function() {
             const json = editor.get();
             SVG_Box.updateObject(json.id, json);
-            notes.value = SVG_Box.objects[json.id].note;
+            e_notes.value = SVG_Box.objects[json.id].note;
+            e_title.value = SVG_Box.objects[json.id].title;
         }
     }
     const editor = new JSONEditor(container, options)
@@ -95,32 +126,5 @@ function setupJSONEditor() {
     return editor;
 }
 
-
-const svg_box = document.querySelector("#svg_box");
-let SVG_Box = new SVGBox(svg_box);
-
-const notes = document.querySelector("#txt_note");
-notes.addEventListener("input", function(event) {
-    let json = editor.get();
-    json.note = notes.value;
-    SVG_Box.updateObject(json.id, json);
-    editor.set(json);
-})
-
-SVG_Box.selectfunction = function(id) {
-    editor.set(SVG_Box.objects[id]);
-    notes.value = SVG_Box.objects[id].note;
-}
-SVG_Box.dragfunction = SVG_Box.resizefunction = SVG_Box.enddragfunction = SVG_Box.endresizefunction = function(id) {
-    editor.set(SVG_Box.objects[id]);
-}
-SVG_Box.deselectfunction = function(id) {
-    editor.set(undefined);
-    notes.value = "";
-}
-
-
-
-
-let editor = setupJSONEditor();
+let JSONeditor = setupJSONEditor();
 // const updatedJson = editor.get()

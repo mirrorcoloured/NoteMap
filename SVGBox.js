@@ -148,6 +148,9 @@ export class SVGBox {
         if (!data.note) {
             data.note = "";
         }
+        if (!data.title) {
+            data.title = "";
+        }
 
         let new_element = this.createSVGElement(data.tag, data);
 
