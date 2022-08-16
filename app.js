@@ -1,7 +1,6 @@
 import { SVGBox } from "./SVGBox.js";
 import { getRandomColorStringHSV } from "./help_functions.js";
 
-
 // Layout
 document.querySelector("#chk_left").addEventListener("input", updateGrid);
 document.querySelector("#chk_right").addEventListener("input", updateGrid);
