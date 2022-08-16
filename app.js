@@ -23,8 +23,8 @@ function updateGrid() {
     } else if (right) {
         areas = `
         "${'bar '.repeat(12)}"
-        "${'c '.repeat(9)} json json json json"
-        "${'c '.repeat(9)} note note note note"`
+        "${'c '.repeat(10)} json json"
+        "${'c '.repeat(10)} note note"`
     } else {
         areas = `
         "${'bar '.repeat(12)}"
