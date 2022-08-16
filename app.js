@@ -112,10 +112,7 @@ SVG_Box.selectfunction = function(id) {
     editor.set(SVG_Box.objects[id]);
     notes.value = SVG_Box.objects[id].note;
 }
-SVG_Box.dragfunction = function(id) {
-    editor.set(SVG_Box.objects[id]);
-}
-SVG_Box.enddragfunction = function(id) {
+SVG_Box.dragfunction = SVG_Box.resizefunction = SVG_Box.enddragfunction = SVG_Box.endresizefunction = function(id) {
     editor.set(SVG_Box.objects[id]);
 }
 SVG_Box.deselectfunction = function(id) {
